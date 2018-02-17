@@ -1,0 +1,30 @@
+<div class="row text-center" *ngIf="!booksService.isLoaded">
+  ...Loading
+</div>
+<div *ngIf="booksService.isLoaded">
+  <div class="row light-blue lighten-4 card">
+    <div class="col s12 offset-s10">
+      <button
+        class="waves-effect btn-large"
+        (click)="onAdd()"
+        [disabled]="!addBook"
+      >
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+  </div>
+  <div *ngFor="let book of books, let ind = index">
+    <div class="row light-blue lighten-4 card">
+
+      <app-books
+        (bookDel)="bookDel($event)"
+        (bookChange)="bookChange($event)"
+        (bookEdit)="bookEdit($event)"
+        [book]="book"
+        [books]="books"
+      >
+      </app-books>
+
+    </div>
+  </div>
+
