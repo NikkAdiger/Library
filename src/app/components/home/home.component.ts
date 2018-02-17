@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
   }
 
   bookEdit(addBook) {
-    console.log(addBook);
     this.addBook = addBook;
   }
 
