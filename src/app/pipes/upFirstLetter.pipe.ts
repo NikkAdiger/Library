@@ -8,15 +8,13 @@ export class UpFirstLetterPipe implements PipeTransform {
 
   transform(value: string): string {
 
-    const arr = value.split(' ');
-    const arrres = [];
+    const array = value.split(' ');
+    const arrayResult = [];
 
-    arr.forEach((word) => {
-      const letter = word.substr(0, 1).toUpperCase();
-      const wordres = letter + word.substr(1);
-      arrres.push(wordres);
+    array.forEach((word) => {
+      arrayResult.push(word.substr(0, 1).toUpperCase() + word.substr(1));
     });
 
-    return arrres.join(' ');
+    return arrayResult.join(' ');
   }
 }
