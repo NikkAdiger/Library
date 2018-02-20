@@ -44,7 +44,7 @@ export class BooksComponent implements OnInit {
 
     this.message = new Message('', '');
     this.form = new FormGroup({
-      'tittle': new FormControl(null, [Validators.required]),
+      'tittle': new FormControl(null, [Validators.required], this.isBusyTittle.bind(this)),
       'author': new FormControl(null, [Validators.required]),
       'date': new FormControl(null, [Validators.required, Validators.pattern(Regex.validDate)])
     });
@@ -68,7 +68,6 @@ export class BooksComponent implements OnInit {
     if (this.newBook) {
       this.booksService.postBasicApi('books', this.book)
         .subscribe((book: Book) => {
-          console.log(book);
           this.bookChange.emit(book);
         });
     } else {
@@ -97,7 +96,7 @@ export class BooksComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.booksService.getBookByTittle(control.value)
         .subscribe((book: Book) => {
-          if (book && book !== this.book) {
+          if (book && book.id !== this.book.id) {
             return resolve({isBusy: true});
           } else {
             return resolve(null);

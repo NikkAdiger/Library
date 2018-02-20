@@ -1,8 +1,8 @@
-<div class="row text-center" *ngIf="!booksService.isLoaded">
-  ...Loading
+<div class="row text-center" *ngIf="!isLoaded">
+  <div class="indeterminate"></div>
 </div>
-<div *ngIf="booksService.isLoaded">
-  <div class="row light-blue lighten-4 card">
+<div *ngIf="isLoaded">
+  <div class="row grey lighten-5 card">
     <div class="col s12 offset-s10">
       <button
         class="waves-effect btn-large"
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div *ngFor="let book of books, let ind = index">
-    <div class="row light-blue lighten-4 card">
+    <div class="row grey lighten-5 card">
 
       <app-books
         (bookDel)="bookDel($event)"
@@ -28,3 +28,16 @@
     </div>
   </div>
 </div>
+<div class="divider"></div>
+<ul class="pagination center" *ngIf="this.totalPages.length > 1">
+  <li [class]="disabledPage(0)">
+    <a (click)="showPage(this.currentPage-1)"><i class="material-icons">chevron_left</i></a>
+  </li>
+  <li *ngFor="let page of this.totalPages; let i = index" [class]="activePage(i+1)">
+    <a (click)="showPage(i+1)">{{i+1}}</a>
+  </li>
+  <li [class]="disabledPage(this.totalPages.length-1)">
+    <a (click)="showPage(this.currentPage+1)"><i class="material-icons">chevron_right</i></a>
+  </li>
+</ul>
+

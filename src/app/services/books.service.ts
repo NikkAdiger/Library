@@ -6,13 +6,13 @@ import 'rxjs/add/operator/map';
 
 import { BasicApi } from '../core/basic-api';
 import { Book } from '../models/book';
-
+import { Count } from '../models/count';
 
 
 @Injectable()
 export class BooksService extends BasicApi {
 
-  isLoaded = false;
+  booksPerPage = 5;
 
   constructor(public http: HttpClient) {
     super(http);
@@ -21,6 +21,16 @@ export class BooksService extends BasicApi {
   getAllBooks(): Observable<Book[]> {
 
     return this.getBasicApi('books');
+  }
+
+  getbooksPage(page: number): Observable<Book[]> {
+
+    return this.getBasicApi('books/?' + 'offset=' + (page - 1) * this.booksPerPage + '&limit=' + this.booksPerPage);
+  }
+
+  getCountPage(): Observable<Count> {
+
+    return this.getBasicApi('count');
   }
 
   addBook(book: Book): Observable<Book> {
