@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class BasicApi {
 
-  private baseUrl = 'http://localhost:3000/';
+  private baseUrl = 'http://quiet-bastion-50090.herokuapp.com:3000/';
 
   constructor(public http: HttpClient) {
   }
