@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class BasicApi {
 
-  private baseUrl = 'http://quiet-bastion-50090.herokuapp.com:3000/';
+  private baseUrl = 'http://localhost:8081/';
 
   constructor(public http: HttpClient) {
   }
@@ -31,7 +31,7 @@ export class BasicApi {
     return this.http.put(this.getUrl(key), data);
   }
 
-  deleteBasicApi(key: string, id: number): Observable<any> {
+  deleteBasicApi(key: string, id: string): Observable<any> {
 
     return this.http.delete(this.getUrl(key) + '/' + id);
   }

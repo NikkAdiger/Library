@@ -6,7 +6,7 @@
   "books": [
     {
       "id": 2,
-      "author": "autor 89",
+      "author": "autor 87",
       "date": "11/03/2012",
       "tittle": "A Country Christmas"
     },
@@ -14,12 +14,6 @@
       "id": 3,
       "author": "autor 3",
       "date": "19/04/2007",
-      "tittle": "Psyches Art"
-    },
-    {
-      "id": 5,
-      "author": "autor 3",
-      "date": "20/04/2007",
       "tittle": "Psyches Art"
     },
     {
@@ -45,6 +39,12 @@
       "tittle": "Book new 4",
       "date": "15/08/2010",
       "id": 15
+    },
+    {
+      "author": "waear rterxzer",
+      "tittle": "iug uig iguiu",
+      "date": "12/12/2012",
+      "id": 16
     }
   ]
 }

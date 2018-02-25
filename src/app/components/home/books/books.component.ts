@@ -15,6 +15,7 @@ export class BooksComponent implements OnInit {
 
   @Output() bookDel = new EventEmitter<Book>();
   @Output() bookChange = new EventEmitter<Book>();
+  @Output() bookCreate = new EventEmitter<Book>();
   @Output() bookEdit = new EventEmitter<boolean>();
   @Input() book: Book;
   @Input() books: Book[];
@@ -44,7 +45,7 @@ export class BooksComponent implements OnInit {
 
     this.message = new Message('', '');
     this.form = new FormGroup({
-      'tittle': new FormControl(null, [Validators.required], this.isBusyTittle.bind(this)),
+      'tittle': new FormControl(null, [Validators.required]),
       'author': new FormControl(null, [Validators.required]),
       'date': new FormControl(null, [Validators.required, Validators.pattern(Regex.validDate)])
     });
@@ -68,7 +69,7 @@ export class BooksComponent implements OnInit {
     if (this.newBook) {
       this.booksService.postBasicApi('books', this.book)
         .subscribe((book: Book) => {
-          this.bookChange.emit(book);
+          this.bookCreate.emit(book);
         });
     } else {
       this.bookChange.emit(this.book);
@@ -78,8 +79,6 @@ export class BooksComponent implements OnInit {
   }
 
   onCancel() {
-
-    console.log(this.form);
 
     if (this.newBook) {
       this.books.splice(0, 1);

@@ -25,7 +25,8 @@ export class BooksService extends BasicApi {
 
   getbooksPage(page: number): Observable<Book[]> {
 
-    return this.getBasicApi('books/?' + 'offset=' + (page - 1) * this.booksPerPage + '&limit=' + this.booksPerPage);
+//    return this.getBasicApi('books/?' + 'offset=' + (page - 1) * this.booksPerPage + '&limit=' + this.booksPerPage);
+    return this.getBasicApi('books');
   }
 
   getCountPage(): Observable<Count> {
@@ -43,7 +44,7 @@ export class BooksService extends BasicApi {
     return this.putBasicApi('books', book);
   }
 
-  delBook(id: number): Observable<any> {
+  delBook(id: string): Observable<any> {
 
     return this.deleteBasicApi('books', id);
   }

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   books: Book[];
   totalPages = [1];
-  currentPage = 0;
+  currentPage = 1;
   isLoaded = false;
 
   addBook: boolean;
@@ -29,14 +29,13 @@ export class HomeComponent implements OnInit {
         this.totalPages = Array(Math.ceil(count.counts / this.booksService.booksPerPage)) || [1];
       });
 
-    this.showPage(1);
+    this.showPage(this.currentPage);
     this.addBook = true;
   }
 
   bookDel(book) {
-
     this.isLoaded = false;
-    this.booksService.deleteBasicApi('books', +book.id)
+    this.booksService.deleteBasicApi('books', book._id)
       .subscribe(() => {
         this.showPage(this.currentPage);
       });
@@ -54,6 +53,12 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  bookCreate(book) {
+    if (book) {
+      this.showPage(this.currentPage);
+    }
+  }
+
   onAdd() {
 
     this.addBook = false;
@@ -63,6 +68,7 @@ export class HomeComponent implements OnInit {
   }
 
   showPage(pageNumber) {
+
     if (pageNumber < 1 || pageNumber > this.totalPages.length) {
       return;
     }
@@ -71,10 +77,9 @@ export class HomeComponent implements OnInit {
 
     this.booksService.getbooksPage(pageNumber)
       .subscribe((books: Book[]) => {
-        books.forEach((element) => {
-          this.books = books;
-          this.isLoaded = true;
-        });
+
+        this.books = books;
+        this.isLoaded = true;
       });
   }
 
