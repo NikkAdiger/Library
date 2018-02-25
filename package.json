@@ -15,6 +15,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "1.6.8",
+    "@angular/compiler-cli": "^5.2.0",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -30,7 +32,8 @@
     "materialize-css": "^0.100.2",
     "moment": "^2.20.1",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "typescript": "~2.5.3"
   },
   "devDependencies": {
     "@angular/cli": "1.6.8",

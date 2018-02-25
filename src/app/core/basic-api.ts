@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class BasicApi {
 
-  private baseUrl = 'http://localhost:8081/';
+  private baseUrl = '/';
 
   constructor(public http: HttpClient) {
   }
