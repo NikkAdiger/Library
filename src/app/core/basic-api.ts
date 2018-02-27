@@ -6,7 +6,9 @@ import { Observable } from 'rxjs/Observable';
 
 export class BasicApi {
 
-  private baseUrl = '/';
+  // private baseUrl = '/';
+ private baseUrl = 'https://library-server.herokuapp.com/';
+ // private baseUrl = 'http://localhost:8080/';
 
   constructor(public http: HttpClient) {
   }
